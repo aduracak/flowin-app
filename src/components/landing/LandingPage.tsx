@@ -4,7 +4,6 @@ import {
   ArrowRight, 
   CheckCircle, 
   Users, 
-  Zap, 
   BarChart3, 
   Smartphone,
   Moon,
@@ -58,8 +57,12 @@ export default function LandingPage() {
               transition={{ delay: 0.2 }}
               className="flex items-center space-x-2"
             >
-              <div className="h-8 w-8 bg-gradient-logo rounded-lg flex items-center justify-center">
-                <Zap className="h-5 w-5 text-white" />
+              <div className="h-8 w-8 rounded-lg overflow-hidden flex items-center justify-center bg-white shadow-sm">
+                <img 
+                  src="/logo.png" 
+                  alt="Flowin Logo" 
+                  className="h-7 w-7 object-contain"
+                />
               </div>
               <span className="text-xl font-bold text-gray-900 dark:text-white">Flowin</span>
             </motion.div>
@@ -265,8 +268,12 @@ export default function LandingPage() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="col-span-1 md:col-span-2">
               <div className="flex items-center space-x-2 mb-4">
-                <div className="h-8 w-8 bg-primary-600 rounded-lg flex items-center justify-center">
-                  <Zap className="h-5 w-5 text-white" />
+                <div className="h-8 w-8 rounded-lg overflow-hidden flex items-center justify-center bg-white">
+                  <img 
+                    src="/logo.png" 
+                    alt="Flowin Logo" 
+                    className="h-7 w-7 object-contain"
+                  />
                 </div>
                 <span className="text-xl font-bold text-white">Flowin</span>
               </div>

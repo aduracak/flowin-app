@@ -9,7 +9,6 @@ import {
   Plus,
   ChevronLeft,
   ChevronRight,
-  Zap,
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -52,21 +51,31 @@ export default function Sidebar({ className = '' }: SidebarProps) {
     >
       {/* Header */}
       <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
-        {!isCollapsed && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.1 }}
-            className="flex items-center space-x-2"
-          >
-            <div className="h-8 w-8 bg-primary-600 rounded-lg flex items-center justify-center">
-              <Zap className="h-5 w-5 text-white" />
-            </div>
-            <span className="text-xl font-bold text-gray-900 dark:text-white">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.1 }}
+          className="flex items-center space-x-2"
+        >
+          <div className="h-8 w-8 rounded-lg overflow-hidden flex items-center justify-center bg-white">
+            <img 
+              src="/logo.png" 
+              alt="Flowin Logo" 
+              className="h-7 w-7 object-contain"
+            />
+          </div>
+          {!isCollapsed && (
+            <motion.span
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -10 }}
+              transition={{ duration: 0.2 }}
+              className="text-xl font-bold text-gray-900 dark:text-white"
+            >
               Flowin
-            </span>
-          </motion.div>
-        )}
+            </motion.span>
+          )}
+        </motion.div>
         
         <button
           onClick={() => setIsCollapsed(!isCollapsed)}
