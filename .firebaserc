@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "flowin-app-aduracak",
+    "task-manager": "flowin-app-aduracak"
+  },
+  "targets": {},
+  "etags": {}
+}
