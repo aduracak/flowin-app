@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import {
   Bell,
   Check,
   X,
-  Trash2,
   MoreVertical,
   Clock,
   AlertCircle,
@@ -30,7 +29,6 @@ export default function NotificationDropdown({ isOpen, onClose }: NotificationDr
     isLoading,
     markAsRead,
     markAllAsRead,
-    deleteNotification,
     clearAllNotifications,
   } = useNotifications();
   
@@ -74,7 +72,7 @@ export default function NotificationDropdown({ isOpen, onClose }: NotificationDr
     setExpandedNotifications(newExpanded);
   };
 
-  const getNotificationIcon = (type: string, priority: string) => {
+  const getNotificationIcon = (type: string, _priority: string) => {
     switch (type) {
       case 'task_assigned':
         return <CheckCircle className="h-5 w-5 text-blue-500" />;

@@ -12,7 +12,6 @@ import {
   onSnapshot,
   writeBatch,
   serverTimestamp,
-  Timestamp,
 } from 'firebase/firestore';
 import { db } from './firebase';
 // Local type definitions to avoid import issues
@@ -269,7 +268,7 @@ export const getUserProjects = async (userId: string): Promise<Project[]> => {
     console.error('Error getting user projects:', error);
     
     // If the error is about missing index, provide helpful message
-    if (error.message?.includes('index')) {
+    if (error instanceof Error && error.message?.includes('index')) {
       console.log('Index is being created. Please wait a few minutes and refresh.');
     }
     

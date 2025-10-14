@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Settings,
@@ -14,19 +14,14 @@ import {
   EyeOff,
   Save,
   Camera,
-  Edit3,
   Moon,
   Sun,
   Monitor,
   Volume2,
   VolumeX,
-  Mail,
-  Smartphone,
   Lock,
   Key,
-  LogOut,
   AlertTriangle,
-  Check,
   X,
   Info
 } from 'lucide-react';
@@ -85,9 +80,9 @@ export default function SettingsPage() {
   
   // User profile states
   const [displayName, setDisplayName] = useState(user?.displayName || '');
-  const [email, setEmail] = useState(user?.email || '');
+  const [email] = useState(user?.email || '');
   const [bio, setBio] = useState('');
-  const [profileImage, setProfileImage] = useState(user?.photoURL || '');
+  const [profileImage] = useState(user?.photoURL || '');
   
   // Password change states
   const [currentPassword, setCurrentPassword] = useState('');
@@ -273,15 +268,15 @@ export default function SettingsPage() {
     }));
   };
 
-  const updatePrivacySetting = (key: keyof UserSettings['privacy'], value: any) => {
-    setSettings(prev => ({
-      ...prev,
-      privacy: {
-        ...prev.privacy,
-        [key]: value,
-      },
-    }));
-  };
+  // const updatePrivacySetting = (key: keyof UserSettings['privacy'], value: any) => {
+  //   setSettings(prev => ({
+  //     ...prev,
+  //     privacy: {
+  //       ...prev.privacy,
+  //       [key]: value,
+  //     },
+  //   }));
+  // };
 
   const updatePreferenceSetting = (key: keyof UserSettings['preferences'], value: any) => {
     setSettings(prev => ({

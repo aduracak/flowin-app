@@ -1,8 +1,7 @@
-import React from 'react';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { motion } from 'framer-motion';
-import { Calendar, User, Flag, GripVertical, Edit, Trash2 } from 'lucide-react';
+import { Calendar, User, GripVertical, Edit, Trash2 } from 'lucide-react';
 import { useConfirmation } from '../../contexts/ConfirmationContext';
 // Local type definitions to avoid import issues
 type TaskStatus = 'todo' | 'in-progress' | 'done';

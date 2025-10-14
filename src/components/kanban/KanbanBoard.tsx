@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import {
   DndContext,
@@ -9,9 +9,7 @@ import {
   closestCorners,
 } from '@dnd-kit/core';
 import {
-  SortableContext,
   arrayMove,
-  verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 import { Plus, Loader } from 'lucide-react';
 import KanbanColumn from './KanbanColumn';
@@ -133,7 +131,7 @@ export default function KanbanBoard({ projectId }: KanbanBoardProps) {
 
     setIsSubmitting(true);
     try {
-      await createTask(projectId, taskData, user.id);
+      await createTask(projectId!, taskData, user.id);
       setIsTaskModalOpen(false);
     } catch (error) {
       console.error('Error creating task:', error);
@@ -176,7 +174,7 @@ export default function KanbanBoard({ projectId }: KanbanBoardProps) {
     setEditingTask(undefined);
   };
 
-  const handleAddTask = (status?: 'todo' | 'in-progress' | 'done') => {
+  const handleAddTask = (_status?: 'todo' | 'in-progress' | 'done') => {
     setEditingTask(undefined);
     setIsTaskModalOpen(true);
   };
@@ -210,7 +208,7 @@ export default function KanbanBoard({ projectId }: KanbanBoardProps) {
     })
   );
 
-  const columnsId = useMemo(() => columns.map((col) => col.id), [columns]);
+  // const columnsId = useMemo(() => columns.map((col) => col.id), [columns]);
 
   const handleDragStart = (event: any) => {
     setActiveId(event.active.id as string);
@@ -447,7 +445,7 @@ export default function KanbanBoard({ projectId }: KanbanBoardProps) {
       <TaskModal
         isOpen={isTaskModalOpen}
         onClose={handleCloseModal}
-        onSave={editingTask ? handleUpdateTask : handleCreateTask}
+        onSave={(data) => editingTask ? handleUpdateTask(data as UpdateTaskData) : handleCreateTask(data as CreateTaskData)}
         task={editingTask}
         isLoading={isSubmitting}
       />

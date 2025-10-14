@@ -7,7 +7,6 @@ import {
   Info,
   CheckCircle,
   X,
-  Save,
   LogOut,
   UserX,
   FileX,

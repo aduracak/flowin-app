@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Users, Folder, Calendar, Globe } from 'lucide-react';
+import { X, Folder } from 'lucide-react';
 import { useConfirmation } from '../../contexts/ConfirmationContext';
 
 // Local type definitions

@@ -8,10 +8,7 @@ import {
   CheckSquare,
   X,
   ArrowRight,
-  Star,
   Calendar,
-  User,
-  Tag,
   AlertCircle,
 } from 'lucide-react';
 import { useSearch } from '../../contexts/SearchContext';

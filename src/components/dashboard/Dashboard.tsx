@@ -1,4 +1,3 @@
-import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Header from './Header';
@@ -9,7 +8,7 @@ import SettingsPage from './SettingsPage';
 import { useMobile } from '../../contexts/MobileContext';
 
 export default function Dashboard() {
-  const { isMobile, isTablet, sidebarOpen } = useMobile();
+  const { isMobile, isTablet } = useMobile();
 
   return (
     <div className="flex h-screen bg-gray-50 dark:bg-gray-900 relative">

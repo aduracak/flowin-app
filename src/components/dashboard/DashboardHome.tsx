@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useAuth } from '../../contexts/AuthContext';
@@ -29,7 +29,7 @@ import {
 
 export default function DashboardHome() {
   const { user } = useAuth();
-  const { isMobile, isTablet } = useMobile();
+  const { isMobile } = useMobile();
   const [projects, setProjects] = useState<Project[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isCreatingProject, setIsCreatingProject] = useState(false);
@@ -163,35 +163,35 @@ export default function DashboardHome() {
     },
   ];
 
-  const recentProjects = [
-    {
-      id: '1',
-      name: 'Website Redesign',
-      description: 'Complete overhaul of the company website',
-      progress: 75,
-      members: 5,
-      dueDate: '2024-12-15',
-      color: 'bg-blue-500',
-    },
-    {
-      id: '2',
-      name: 'Mobile App',
-      description: 'Cross-platform mobile application development',
-      progress: 45,
-      members: 8,
-      dueDate: '2024-12-30',
-      color: 'bg-green-500',
-    },
-    {
-      id: '3',
-      name: 'Marketing Campaign',
-      description: 'Q1 2024 marketing strategy implementation',
-      progress: 60,
-      members: 4,
-      dueDate: '2024-11-20',
-      color: 'bg-purple-500',
-    },
-  ];
+  // const recentProjects = [
+  //   {
+  //     id: '1',
+  //     name: 'Website Redesign',
+  //     description: 'Complete overhaul of the company website',
+  //     progress: 75,
+  //     members: 5,
+  //     dueDate: '2024-12-15',
+  //     color: 'bg-blue-500',
+  //   },
+  //   {
+  //     id: '2',
+  //     name: 'Mobile App',
+  //     description: 'Cross-platform mobile application development',
+  //     progress: 45,
+  //     members: 8,
+  //     dueDate: '2024-12-30',
+  //     color: 'bg-green-500',
+  //   },
+  //   {
+  //     id: '3',
+  //     name: 'Marketing Campaign',
+  //     description: 'Q1 2024 marketing strategy implementation',
+  //     progress: 60,
+  //     members: 4,
+  //     dueDate: '2024-11-20',
+  //     color: 'bg-purple-500',
+  //   },
+  // ];
 
   const upcomingTasks = [
     {
