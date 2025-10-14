@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { ThemeProvider } from './contexts/ThemeContext';
@@ -7,10 +8,12 @@ import { NotificationProvider } from './contexts/NotificationContext';
 import { ConfirmationProvider } from './contexts/ConfirmationContext';
 import { MobileProvider } from './contexts/MobileContext';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import LandingPage from './components/landing/LandingPage';
-import LoginPage from './components/auth/LoginPage';
-import RegisterPage from './components/auth/RegisterPage';
-import Dashboard from './components/dashboard/Dashboard';
+
+// Lazy load components for better performance
+const LandingPage = lazy(() => import('./components/landing/LandingPage'));
+const LoginPage = lazy(() => import('./components/auth/LoginPage'));
+const RegisterPage = lazy(() => import('./components/auth/RegisterPage'));
+const Dashboard = lazy(() => import('./components/dashboard/Dashboard'));
 
 function App() {
   return (
@@ -22,20 +25,29 @@ function App() {
               <ConfirmationProvider>
             <Router>
           <div className="App">
-            <Routes>
-              <Route path="/" element={<LandingPage />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/register" element={<RegisterPage />} />
-              <Route
-                path="/dashboard/*"
-                element={
-                  <ProtectedRoute>
-                    <Dashboard />
-                  </ProtectedRoute>
-                }
-              />
-              <Route path="*" element={<Navigate to="/" replace />} />
-            </Routes>
+            <Suspense fallback={
+              <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
+                <div className="text-center">
+                  <div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-primary-600 border-t-transparent mb-4"></div>
+                  <p className="text-gray-600 dark:text-gray-400 text-lg font-medium">Loading Flowin...</p>
+                </div>
+              </div>
+            }>
+              <Routes>
+                <Route path="/" element={<LandingPage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/register" element={<RegisterPage />} />
+                <Route
+                  path="/dashboard/*"
+                  element={
+                    <ProtectedRoute>
+                      <Dashboard />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route path="*" element={<Navigate to="/" replace />} />
+              </Routes>
+            </Suspense>
             <Toaster
               position="top-right"
               toastOptions={{
